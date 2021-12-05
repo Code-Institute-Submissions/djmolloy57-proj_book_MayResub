@@ -19,18 +19,32 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-
-#@app.route("/")
+@app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
     tasks = list(mongo.db.books.find())
     return render_template("tasks.html", tasks=tasks)
 
-@app.route("/")
-def hello():
-    return "Hello World .. again!"
+@app.route("/Recommended_bk")
+def Recommended_bk():
+    return render_template("recommended_books.html")
+
+@app.route("/add_or_delete_bk")
+def add_or_delete_bk():
+    return render_template("upload_delete_books.html")
+
+@app.route("/view_add_review")
+def view_add_review():
+    return render_template("view_add_review.html")
+    
+
+
+#@app.route("/")
+#def hello():
+#    return "Hello World .. again!"
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
+

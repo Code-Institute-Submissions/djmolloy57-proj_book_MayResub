@@ -15,7 +15,7 @@
         <td>{{ task.Category}}</td>
         <td><img src="{{ task.book_cover}}"></td>
         <td>{{ task.Number_of_Reviews}}</td>
-        <td><a class="waves-effect waves-light btn">View/Add Reviews</a></td>
+        <td><a class="waves-effect waves-light btn" href="{{ url_for('view_add_review') }}">View/Add Reviews</a></td>
         <br>
         </tr>
     {% endfor %}
