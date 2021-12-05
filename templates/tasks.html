@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book List</title>
+{% extends "base.html" %}
+{% block content %}
 
-</head>
-<body>
+    <h4>Book List</h4>
     {% for task in tasks %}
         {{ task.book_name }}<br>
         {{ task.Author}}<br>
         {{ task.Category}}<br>
         {{ task.book_cover}}<br>
+        <br>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
