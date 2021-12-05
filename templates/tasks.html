@@ -15,7 +15,13 @@
         <td>{{ task.Category}}</td>
         <td><img src="{{ task.book_cover}}"></td>
         <td>{{ task.Number_of_Reviews}}</td>
-        <td><a class="waves-effect waves-light btn" href="{{ url_for('view_add_review') }}">View/Add Reviews</a></td>
+        <td>
+            <form action="/view_add_review" method="post" role="form">
+                <input type="hidden" id="book_name" name="book_name" value="{{ task.book_name }}">
+                <input type="submit" name="submit" value="Change Label" class="btn btn-info">
+            </form>
+        </td>
+        <td>{{loop.index}} </td>
         <br>
         </tr>
     {% endfor %}

@@ -33,10 +33,20 @@ def Recommended_bk():
 def add_or_delete_bk():
     return render_template("upload_delete_books.html")
 
-@app.route("/view_add_review")
+#@app.route("/view_add_review/<name>")
+#def view_add_review(name):
+#    return render_template("view_add_review.html",task=name)
+# used with <td><a class="waves-effect waves-light btn" href="{{ url_for('view_add_review') }">View/Add Reviews</a></td> in jinja for loop in tasks.html
+
+@app.route('/view_add_review', methods=['GET', 'POST'])
 def view_add_review():
-    return render_template("view_add_review.html")
-    
+    if request.method == 'GET':
+        return render_template("view_add_review.html")
+
+    if request.method == 'POST':
+        book_name = request.form['book_name']
+        return render_template("view_add_review.html", task=book_name)
+
 
 
 #@app.route("/")
