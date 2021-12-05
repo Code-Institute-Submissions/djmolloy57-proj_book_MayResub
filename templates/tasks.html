@@ -17,8 +17,8 @@
         <td>{{ task.Number_of_Reviews}}</td>
         <td>
             <form action="/view_add_review" method="post" role="form">
-                <input type="hidden" id="book_name" name="book_name" value="{{ task.book_name }}">
-                <input type="submit" name="submit" value="Change Label" class="btn btn-info">
+                <input type="hidden" id="book_id" name="book_id" value="{{ task._id }}">
+                <input type="submit" name="submit" value="View/Add Review" class="btn btn-info">
             </form>
         </td>
         <td>{{loop.index}} </td>

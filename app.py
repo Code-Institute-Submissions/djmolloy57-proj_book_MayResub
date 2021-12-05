@@ -44,8 +44,11 @@ def view_add_review():
         return render_template("view_add_review.html")
 
     if request.method == 'POST':
-        book_name = request.form['book_name']
-        return render_template("view_add_review.html", task=book_name)
+        book_id = request.form['book_id']
+        book = list(mongo.db.books.find({"_id" : ObjectId(book_id)}))
+        #bk_record = list(mongo.db.books.find({book_name : 'Da Vinci Code'}))
+        
+        return render_template("view_add_review.html", bk=book)
 
 
 

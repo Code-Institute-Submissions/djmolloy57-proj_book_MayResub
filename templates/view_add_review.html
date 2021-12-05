@@ -1,6 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h4>View and Add Review</h4>
-     {{ task }}
+<h4>View and Add Review</h4>
+<table cellspacing="0" class="column-options">
+    <th>Book Name</th>
+    <th>Author</th>
+    <th>Category</th>
+    <th>Book Cover</th>
+     {% for item in bk %}
+        <tr>
+        <td>{{ item.book_name }}</td>
+        <td>{{ item.Author}}</td>
+        <td>{{ item.Category}}</td>
+        <td><img src="{{ item.book_cover}}"></td>
+        </tr>
+        <tr>
+           <h5>Book Summary:</h5>
+            {{ item.book_summary }}
+          </td>
+           
+        </tr>
+        <td><a class="waves-effect waves-light btn">Add Reviews</a></td>
+
+    {% endfor %}
+       
+    
+</table>
 {% endblock %}
