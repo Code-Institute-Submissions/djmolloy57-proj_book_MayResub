@@ -5,6 +5,7 @@
     <th>Author</th>
     <th>Category</th>
     <th>Book Cover</th>
+    <th>Number of Reviews</th>
     <th>Reviews</th>
     <h4>Book List</h4>
     {% for task in tasks %}
@@ -13,6 +14,8 @@
         <td>{{ task.Author}}</td>
         <td>{{ task.Category}}</td>
         <td><img src="{{ task.book_cover}}"></td>
+        <td>{{ task.Number_of_Reviews}}</td>
+        <td><a class="waves-effect waves-light btn">View/Add Reviews</a></td>
         <br>
         </tr>
     {% endfor %}
