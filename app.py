@@ -46,15 +46,15 @@ def view_add_review():
     if request.method == 'POST':
         book_id = request.form['book_id']
         book = list(mongo.db.books.find({"_id" : ObjectId(book_id)}))
-        #bk_record = list(mongo.db.books.find({book_name : 'Da Vinci Code'}))
         
         return render_template("view_add_review.html", bk=book)
 
-
-
-#@app.route("/")
-#def hello():
-#    return "Hello World .. again!"
+@app.route("/write_review", methods=['GET','POST'])
+def write_review():      
+    if request.method == 'POST':
+        bookid = request.form['bookid']
+        review_add_id = mongo.db.books.find({"_id" : ObjectId(bookid)})
+        return render_template("write_review.html", bkid=review_add_id)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
