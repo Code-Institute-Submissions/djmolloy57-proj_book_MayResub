@@ -75,7 +75,8 @@ def submit_review():
         review_add_id = mongo.db.books.find({"_id" : ObjectId(bkid)})
         if  review_add_id:
             try:
-                dbResponse = mongo.db.books.update_one({"_id" : ObjectId(bkid)},{"$set" : {"review": bookreview}})
+                #got the update review array using $push from site https://docs.mongodb.com/manual/reference/operator/update/push/
+                dbResponse = mongo.db.books.update_one({"_id" : ObjectId(bkid)},{"$push" : {"review": bookreview}})
                 return Response(
                     response= json.dumps(
                         {"message":"added review!!"}),

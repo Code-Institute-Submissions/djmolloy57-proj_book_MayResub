@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h4>View and Add Review {{ bk }} </h4>
+<h4>View and Add Review</h4>
 <table cellspacing="0" class="column-options">
     <th>Book Name</th>
     <th>Author</th>
     <th>Category</th>
     <th>Book Cover</th>
+    
      {% for item in bk %}
+     
         <tr>
+
         <td>{{ item.book_name }}</td>
         <td>{{ item.Author}}</td>
         <td>{{ item.Category}}</td>
@@ -20,15 +23,20 @@
           </td>
            
         </tr>
-          <td>
-            {{ item._id }}
+        <tr>
+          <td> Review : {{item['review']}} </td>
+          <td> Review count : {{item['review']|length}}</td>
+  
+        </tr>  
+        <td> 
           <form action="/write_review" method="post" role="form">
             <input type="hidden" id="bookid" name="bookid" value="{{ item._id }}">
-            <input type="submit" name="submit" value=Review" class="btn btn-info">
+            <input type="submit" name="Write submit" value="Write Review" class="btn btn-info">
           </form>
-          </td>
-          {{ item._id }}
+        </td>
+        
     {% endfor %}
+    
        
     
 </table>
