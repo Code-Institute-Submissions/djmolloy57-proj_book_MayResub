@@ -1,10 +1,13 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, Response)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import json
+import sys
+import logging
 
 if os.path.exists("env.py"):
     import env
@@ -50,11 +53,48 @@ def view_add_review():
         return render_template("view_add_review.html", bk=book)
 
 @app.route("/write_review", methods=['GET','POST'])
-def write_review():      
+def write_review():  
+    if request.method == 'GET':
+        return render_template("write_review.html")
+
     if request.method == 'POST':
         bookid = request.form['bookid']
-        review_add_id = mongo.db.books.find({"_id" : ObjectId(bookid)})
-        return render_template("write_review.html", bkid=review_add_id)
+       
+        return render_template("write_review.html", bkid=bookid)
+
+@app.route("/submit_review", methods=['GET','POST'])
+def submit_review():
+    if request.method == 'POST':
+        bkid2 = 7590
+        bkid = request.form['bkid']
+        print('HHIIIIIIIIIIIIIII', file=sys.stderr)
+        app.logger.warning('testing warning log')
+        app.logger.error('testing error log')
+        app.logger.info('testing info log')
+        bookreview = request.form['writeReviewForm']
+        review_add_id = mongo.db.books.find({"_id" : ObjectId(bkid)})
+        if  review_add_id:
+            try:
+                dbResponse = mongo.db.books.update_one({"_id" : ObjectId(bkid)},{"$set" : {"review": bookreview}})
+                return Response(
+                    response= json.dumps(
+                        {"message":"added review!!"}),
+                    status=200,
+                    mimetype="application/json"
+            )
+
+            except Exception as ex:
+                print("*********")
+                print(ex)
+                print("******")
+                return Response(
+                    response= json.dumps(
+                        {"message":"sorry cannot update record"}),
+                    status=500,
+                    mimetype="application/json"
+            )
+            return render_template("submit_review.html", bkid=review_add_id)
+       
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

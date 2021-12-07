@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h4>Write Review {{ bkid[0] }} </h4>
+<h4>Write Review {{  bkid }} </h4>
+       
+    <form action="/submit_review" name="writeReviewForm" method="post" role="form">
+        <input type="hidden" id="bkid" name="bkid" value="{{ bkid }}">
+        <textarea id="writeReviewForm" name="writeReviewForm"></textarea>
+        <input type="submit" name="submit" value="Submit Review" class="btn btn-info">
+       
+    </form> 
+   <p> {{  bkid }} </p>  
+  
+
 
 {% endblock %}
