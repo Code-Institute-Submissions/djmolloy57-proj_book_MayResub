@@ -2,13 +2,15 @@
 
 {% block content %}
 <h4>View and Add Review</h4>
+
+
 <table cellspacing="0" class="column-options">
     <th>Book Name</th>
     <th>Author</th>
     <th>Category</th>
     <th>Book Cover</th>
-    
-     {% for item in bk %}
+
+    {% for item in bk %}
      
         <tr>
 
@@ -18,26 +20,35 @@
         <td><img src="{{ item.book_cover}}"></td>
         </tr>
         <tr>
-           <h5>Book Summary:</h5>
+          <td>
+          <h5>Book Summary:</h5>
             {{ item.book_summary }}
           </td>
-           
         </tr>
         <tr>
-          <td> Review : {{item['review']}} </td>
-          <td> Review count : {{item['review']|length}}</td>
-  
-        </tr>  
+          <td>
+          <h5>Book Reviews: </h5>
+          
+          <td>
+        </td>  
+            <!-- found out iteration in jinja at following site https://newbedev.com/how-to-increment-a-variable-on-a-for-loop-in-jinja-template-->
+            {% set count = namespace(value=0) %}
+            {% for i in item.review %}
+            <tr>   <td>  {{ item.review[count.value] }} </td> </tr>
+              {% set count.value = count.value + 1 %}
+            {% endfor %}
+        
+        <tr>
         <td> 
           <form action="/write_review" method="post" role="form">
             <input type="hidden" id="bookid" name="bookid" value="{{ item._id }}">
             <input type="submit" name="Write submit" value="Write Review" class="btn btn-info">
           </form>
         </td>
-        
+        </tr>
     {% endfor %}
+
     
-       
-    
-</table>
+
+  
 {% endblock %}
