@@ -43,7 +43,9 @@
                 <div>
                   <div style="float: left"><input type="submit" name="Edit Review" value="Click to Edit" class="btn btn-info"  onclick="editReview({{loop.index}})">
                   </div>
-                  <div><input type="submit" name="Submit Changes" value="Submit Changes" class="btn btn-info" onclick="showID({{loop.index}})">
+                  <div><input type="submit" name="Submit Changes" value="Submit Changes" class="btn btn-info" onclick="result=showID({{loop.index}})">
+                  </div>
+                  <div><input type="submit" name="Show Result" value="Show Result" class="btn btn-info" onclick="showResult(result)">
                   </div>
                 </div>                   
               </td>
@@ -95,7 +97,11 @@
       function showID(counter){
         //id_num = 3
         var div = document.getElementById('editable'+counter);
-        alert(div.innerHTML);
+        return div.innerHTML;
+      }
+
+      function showResult(disp_result){
+        alert(disp_result);
       }
             
    
