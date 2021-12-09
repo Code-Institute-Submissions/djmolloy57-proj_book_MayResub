@@ -32,9 +32,46 @@ def get_tasks():
 def Recommended_bk():
     return render_template("recommended_books.html")
 
-@app.route("/add_or_delete_bk")
+@app.route("/add_or_delete_bk" ,methods=['GET', 'POST'])
 def add_or_delete_bk():
-    return render_template("upload_delete_books.html")
+
+    if request.method == "POST":
+       
+        task = {
+            "Category": request.form.get("Category"),
+            "book_name": request.form.get("book_name"),
+            "book_summary": request.form.get("book_summary"),
+            "Author": request.form.get("Author"),
+            "book_cover": request.form.get("book_cover"),
+            "Number_of_Reviews": 0,
+            "review": ""
+        }
+        added_new_rec = mongo.db.tasks.insert_one(task)
+        if  added_new_rec:
+            try:
+        
+                return Response(
+                    response= json.dumps(
+                        {"message":"added Book!!"}),
+                    status=200,
+                    mimetype="application/json"
+            )
+
+            except Exception as ex:
+                print("*********")
+                print(ex)
+                print("******")
+                return Response(
+                    response= json.dumps(
+                        {"message":"sorry cannot add record"}),
+                    status=500,
+                    mimetype="application/json"
+            )
+            return redirect(url_for("tasks"))
+    
+    return render_template('upload_delete_books.html')
+
+  
 
 #@app.route("/view_add_review/<name>")
 #def view_add_review(name):
