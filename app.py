@@ -46,7 +46,7 @@ def add_or_delete_bk():
             "Number_of_Reviews": 0,
             "review": ""
         }
-        added_new_rec = mongo.db.tasks.insert_one(task)
+        added_new_rec = mongo.db.books.insert_one(task)
         if  added_new_rec:
             try:
         
