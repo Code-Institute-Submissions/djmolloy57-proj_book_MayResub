@@ -32,6 +32,11 @@ def get_tasks():
 def Recommended_bk():
     return render_template("recommended_books.html")
 
+@app.route("/delete_bk")
+def delete_bk():
+    lists = list(mongo.db.books.find())
+    return render_template("delete_book.html", lists=lists)
+
 @app.route("/add_or_delete_bk" ,methods=['GET', 'POST'])
 def add_or_delete_bk():
 
