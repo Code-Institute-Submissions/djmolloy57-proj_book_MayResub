@@ -34,7 +34,14 @@
             <!-- found out iteration in jinja at following site https://newbedev.com/how-to-increment-a-variable-on-a-for-loop-in-jinja-template-->
             {% set count = namespace(value=0) %}
             {% for i in item.review %}
-            <tr>   <td>  {{ item.review[count.value] }} </td> </tr>
+            <tr>   <td>  {{ item.review[count.value] }} </td> 
+              <td> 
+                <form action="/write_review" method="post" role="form">
+                  <input type="hidden" id="editbookid" name="editbookid" value="{{ item._id }}">
+                  <input type="submit" name="Edit Review" value="Edit Review" class="btn btn-info">
+                </form>
+              </td>
+            </tr>
               {% set count.value = count.value + 1 %}
             {% endfor %}
         
