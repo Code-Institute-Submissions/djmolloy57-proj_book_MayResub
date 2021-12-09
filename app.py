@@ -104,6 +104,37 @@ def write_review():
        
         return render_template("write_review.html", bkid=bookid)
 
+@app.route("/delete_book", methods=['POST'])
+def delete_book():
+    test1='inside start of delete book function'
+    try:
+        delbkid = request.form['book_id']
+        dbResponse = mongo.db.books.delete_one({"_id" : ObjectId(delbkid)})
+        #review_add_id = mongo.db.books.find({"_id" : ObjectId(bkid)})
+        if dbResponse.deleted_count == 1:
+            return Response(
+                response= json.dumps(
+                {"message":"book deleted"}),
+                status=200,
+                mimetype="application/json"
+            )     
+            return Response(
+                response= json.dumps(
+                {"message":"book not found"}),
+                status=200,
+                mimetype="application/json"
+            )
+    except Exception as ex:
+        print(ex)
+        return Response( 
+            response= json.dumps(
+            {"message":"sorry cannot delete the book"}),
+            status=500,
+            mimetype="application/json"
+        )
+        return render_template("delete_book.html")
+       
+
 @app.route("/submit_review", methods=['GET','POST'])
 def submit_review():
     if request.method == 'POST':

@@ -17,7 +17,7 @@
         <td>{{list['review']|length}}</td>
         
         <td>
-            <form action="/view_add_review" method="post" role="form">
+            <form action="/delete_book" method="post" role="form">
                 <input type="hidden" id="book_id" name="book_id" value="{{ list._id }}">
                 <input type="submit" name="submit" value="Delete Book" class="btn btn-info">
             </form>
