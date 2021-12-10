@@ -168,10 +168,25 @@ def submit_review():
                     mimetype="application/json"
             )
             return render_template("submit_review.html", bkid=review_add_id)
-       
+
+#@app.route('/check_selected' , methods=['GET','POST'])
+#def check_selected():
+#    global selected
+#    post = request.args.get('post', 0, type=int)
+    #getbkid = request.form['booksid']
+#    return json.dumps({'selected post': str(post)})
+    #return render_template("edited_review.html", poster=poster)   
+
+app.route("/check_selected", methods=['GET','POST'])
+def check_selected():
+    global selected
+    getbkid = request.form['booksid']
+    if getbkid == 0:
+        post = request.args.get('post', 0, type=int)
+        return json.dumps({'selected post': str(post)});
+        #return render_template("check_selected.html", poster=post)  
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=True)
-
