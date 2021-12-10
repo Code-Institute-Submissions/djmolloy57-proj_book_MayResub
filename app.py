@@ -186,21 +186,31 @@ def check_selected():
     return json.dumps({'selected post': str(post)});
     #return render_template("check_selected.html", poster=post)  
 
-
-@app.route('/update/<id>' , methods=['GET', 'POST'])
-def update(id):
+# <a href="/update/{{item._id}}/{{ item.review[count.value] }}" 
+@app.route('/update/<id>/<review>' , methods=['GET', 'POST'])
+def update(id,review):
     #friend_to_update = Friends.query.get_or_404(id)
-    friend_to_update = id
+    review_bk_id = id
+    review_bk_update = review
     if request.method == "POST":
         #friend_to_update.name = request.form['name']
-        try:
-	    #db.session.commit()
-            print(friend_to_update)
-            return redirect('/friends')
-        except:
-            return "There was a problem updating that record"
+        review_bkid = mongo.db.books.find({"_id" : ObjectId(review_bk_id)})
+        
+        if review_bkid:
+        
+            try:
+                #oid = ObjectId("9f1a5aa4217d695e4fe56be1")
+                # db.mycollection.update_one({'_id': oid, 'array1': {'$elemMatch': { 'user':  'testUser1' }}}, {'$set': {'array1.$.age': 32}})
+	 
+                print(review_bk_id)
+                print(review_bk_update)
+                #({"_id" : ObjectId(bkid)},{"$push" : {"review": bookreview}})
+                db.books.update_one({'_id': review_bk_id, 'review': { "$elemMatch": {"$set": {"review.$": review_bk_update}}}})
+                return redirect('/view_add_review')
+            except:
+                return "There was a problem updating that record"
     else:
-        return render_template('update.html', friend_to_update=friend_to_update)
+        return render_template('update.html', review_bk_id=review_bk_id, review_bk_update=review_bk_update)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

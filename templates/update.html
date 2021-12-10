@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
+
 {% block content %}
    <div class="container">
-	<h1>Update Friend..</h1>
+	<h1>Update Review..</h1>
         <br/>
-        <form action="/update/{{review_update.id}}"
+        <form action="/update/{{ review_bk_id }}/{{review_bk_update}}"
          METHOD="POST">
-          <input type="text" placeholder="Name" name=name" value="{{review_update.id}}">
-          <input type="submit" value="Update Name" class="btn btn-secondary">
+          <input type="text" placeholder="{{ review_bk_id }}" name="id" value="{{ review_bk_id }}">
+          <input type="text" placeholder="{{review_bk_update}}" name="review" value="{{review_bk_update}}">
+          <input type="submit" value="Update Review" class="btn btn-secondary">
          </form>
       </div>
 
