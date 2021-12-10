@@ -38,20 +38,8 @@
             {% for i in item.review %}
               {{ item._id }}
               {{ item.review[0]}}
-            <tr>   <td> <div id="editable{{loop.index}}" > {{ item.review[count.value] }} </div> </td> 
-              <td> 
-                <div>
-                  <div style="float: left"><input type="submit" name="Edit Review" value="Click to Edit" class="btn btn-info"  onclick="editReview({{loop.index}})">
-                  </div>
-                  <div><input type="submit" name="Submit Changes" value="Submit Changes" class="btn btn-info" onclick="result=showID({{loop.index}})">
-                  </div>
-                
-                    <input type="hidden" id="booksid" name="booksid" value="{{ item._id }}">
-                    <input type="submit" name="Show Result" value="Show Result" class="btn btn-info" onclick="showResult(result)">
-              
-                 
-                </div>                   
-              </td>
+            <tr>   <td> <div id="editable{{loop.index}}" > {{ item.review[count.value] }} <a href="/update/{{ item.review[count.value] }} " class="btn-large light-blue" </div> </td> 
+            
             </tr>
               {% set count.value = count.value + 1 %}
             {% endfor %}
@@ -103,8 +91,9 @@
         //alert("id is " + disp_id);
         alert(" review is " + disp_result);
         //var payload = str(disp_id + disp_result);
-        $.getJSON($SCRIPT_ROOT + '/check_selected', {
-        post: disp_result }, function(data) { var response = data.result; console.log(response);});
+        //$.getJSON($SCRIPT_ROOT + '/check_selected', {
+        $.getJSON('/check_selected', {
+          post: disp_result }, function(data) { var response = data.result; console.log(response);});
         //post: payload }, function(data) { var response = data.result;});
      
       }

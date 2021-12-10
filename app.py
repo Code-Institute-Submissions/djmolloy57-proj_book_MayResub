@@ -177,14 +177,30 @@ def submit_review():
 #    return json.dumps({'selected post': str(post)})
     #return render_template("edited_review.html", poster=poster)   
 
-app.route("/check_selected", methods=['GET','POST'])
+@app.route("/check_selected", methods=['GET','POST'])
 def check_selected():
     global selected
     getbkid = request.form['booksid']
-    if getbkid == 0:
-        post = request.args.get('post', 0, type=int)
-        return json.dumps({'selected post': str(post)});
-        #return render_template("check_selected.html", poster=post)  
+    #if getbkid == 0:
+    post = request.args.get('post', 0, type=int)
+    return json.dumps({'selected post': str(post)});
+    #return render_template("check_selected.html", poster=post)  
+
+
+@app.route('/update/<id>' , methods=['GET', 'POST'])
+def update(id):
+    #friend_to_update = Friends.query.get_or_404(id)
+    friend_to_update = id
+    if request.method == "POST":
+        #friend_to_update.name = request.form['name']
+        try:
+	    #db.session.commit()
+            print(friend_to_update)
+            return redirect('/friends')
+        except:
+            return "There was a problem updating that record"
+    else:
+        return render_template('update.html', friend_to_update=friend_to_update)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
