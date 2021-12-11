@@ -22,7 +22,6 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">  
                 <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
-                <li><a href="{{ url_for('Recommended_bk') }}">Recommended Books</a></li>
                 <li><a href="{{ url_for('add_or_delete_bk')}}">Upload Book</a></li>
                 <li><a href="{{ url_for('delete_bk') }}">Delete Book</a></li>
               </ul>
@@ -33,9 +32,8 @@
           <ul class="sidenav" id="mobile-demo">
             <!--<li><h4 class="center-align text-darken 4">Task Manager</h4></li>-->
             <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
-            <li><a href="{{ url_for('Recommended_bk') }}">Recommended Books</a></li>
-            <li><a href="{{ url_for('add_or_delete_bk')}}"">Upload Book</a></li>
-            <li><a href="mobile.html">Login</a></li>
+            <li><a href="{{ url_for('add_or_delete_bk')}}">Upload Book</a></li>
+            <li><a href="{{ url_for('delete_bk') }}">Delete Book</a></li>
           </ul>
     </header>
     {% block content  %}
