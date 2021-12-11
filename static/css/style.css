@@ -1,3 +1,14 @@
+body{
+    background-color: skyblue;
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    font-weight: bold;
+    
+}
+p{
+    font-weight: normal; 
+}
+
 .text-shadow{
     text-shadow: 3px 3px 3px 3px rgba(0,0,0,0.8);
 }

@@ -77,12 +77,6 @@ def add_or_delete_bk():
     return render_template('upload_delete_books.html')
 
   
-
-#@app.route("/view_add_review/<name>")
-#def view_add_review(name):
-#    return render_template("view_add_review.html",task=name)
-# used with <td><a class="waves-effect waves-light btn" href="{{ url_for('view_add_review') }">View/Add Reviews</a></td> in jinja for loop in tasks.html
-
 @app.route('/view_add_review', methods=['GET', 'POST'])
 def view_add_review():
     if request.method == 'GET':
@@ -110,7 +104,6 @@ def delete_book():
     try:
         delbkid = request.form['book_id']
         dbResponse = mongo.db.books.delete_one({"_id" : ObjectId(delbkid)})
-        #review_add_id = mongo.db.books.find({"_id" : ObjectId(bkid)})
         if dbResponse.deleted_count == 1:
             return Response(
                 response= json.dumps(
@@ -138,12 +131,8 @@ def delete_book():
 @app.route("/submit_review", methods=['GET','POST'])
 def submit_review():
     if request.method == 'POST':
-        bkid2 = 7590
+
         bkid = request.form['bkid']
-        print('HHIIIIIIIIIIIIIII', file=sys.stderr)
-        app.logger.warning('testing warning log')
-        app.logger.error('testing error log')
-        app.logger.info('testing info log')
         bookreview = request.form['writeReviewForm']
         review_add_id = mongo.db.books.find({"_id" : ObjectId(bkid)})
         if  review_add_id:
@@ -169,14 +158,7 @@ def submit_review():
             )
             return render_template("submit_review.html", bkid=review_add_id)
 
-#@app.route('/check_selected' , methods=['GET','POST'])
-#def check_selected():
-#    global selected
-#    post = request.args.get('post', 0, type=int)
-    #getbkid = request.form['booksid']
-#    return json.dumps({'selected post': str(post)})
-    #return render_template("edited_review.html", poster=poster)   
-
+ 
 @app.route("/check_selected", methods=['GET','POST'])
 def check_selected():
     global selected
@@ -184,27 +166,24 @@ def check_selected():
     #if getbkid == 0:
     post = request.args.get('post', 0, type=int)
     return json.dumps({'selected post': str(post)});
-    #return render_template("check_selected.html", poster=post)  
 
-# <a href="/update/{{item._id}}/{{ item.review[count.value] }}" 
+ 
 @app.route('/update/<id>/<review>' , methods=['GET', 'POST'])
 def update(id,review):
-    #friend_to_update = Friends.query.get_or_404(id)
+
     review_bk_id = id
     review_bk_update = review
     if request.method == "POST":
-        #friend_to_update.name = request.form['name']
+     
         review_bkid = mongo.db.books.find({"_id" : ObjectId(review_bk_id)})
         
         if review_bkid:
         
             try:
-                #oid = ObjectId("9f1a5aa4217d695e4fe56be1")
-                # db.mycollection.update_one({'_id': oid, 'array1': {'$elemMatch': { 'user':  'testUser1' }}}, {'$set': {'array1.$.age': 32}})
-	 
+                
                 print(review_bk_id)
                 print(review_bk_update)
-                #({"_id" : ObjectId(bkid)},{"$push" : {"review": bookreview}})
+                
                 db.books.update_one({'_id': review_bk_id, 'review': { "$elemMatch": {"$set": {"review.$": review_bk_update}}}})
                 return redirect('/view_add_review')
             except:

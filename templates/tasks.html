@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <table cellspacing="0" class="column-options">
-    <th>Book Name</th>
-    <th>Author</th>
-    <th>Category</th>
-    <th>Book Cover</th>
-    <th>Number of Reviews</th>
-    <th>Reviews</th>
-    <h4>Book List</h4>
+    <th>BOOK NAME</th>
+    <th>AUTHOR</th>
+    <th>CATEGORY</th>
+    <th>BOOK COVER</th>
+    <th>NUMBER OF REVIEWS</th>
+    <th>REVIEWS</th>
+    <h4>BOOK LIST</h4>
     {% for task in tasks %}
         <tr>
         <td>{{ task.book_name }}</td>
