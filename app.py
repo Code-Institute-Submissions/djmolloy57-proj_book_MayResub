@@ -28,9 +28,32 @@ def get_tasks():
     tasks = list(mongo.db.books.find())
     return render_template("tasks.html", tasks=tasks)
 
-@app.route("/Recommended_bk")
-def Recommended_bk():
-    return render_template("recommended_books.html")
+@app.route("/get_biography")
+def get_biography():
+    result_bio = mongo.db.books.find({
+    "Category" : { "$eq" : "Biography"}})
+    return render_template("book_by_category.html", result_1=result_bio)
+
+
+@app.route("/get_history")
+def get_history():
+
+    result_hist = mongo.db.books.find({
+    "Category" : { "$eq" : "History"}})
+    return render_template("book_by_category.html", result_1=result_hist)
+
+@app.route("/get_fantasy")
+def get_fantasy():
+    result_fantasy = mongo.db.books.find({
+    "Category" : { "$eq" : "Fantasy"}})
+    return render_template("book_by_category.html", result_1=result_fantasy)
+
+@app.route("/get_thriller")
+def get_thriller():
+    result_thriller = mongo.db.books.find({
+    "Category" : { "$eq" : "Thriller"}})
+    return render_template("book_by_category.html", result_1=result_thriller)
+
 
 @app.route("/delete_bk")
 def delete_bk():
@@ -55,12 +78,8 @@ def add_or_delete_bk():
         if  added_new_rec:
             try:
         
-                return Response(
-                    response= json.dumps(
-                        {"message":"added Book!!"}),
-                    status=200,
-                    mimetype="application/json"
-            )
+                flash("Book has been added")
+
 
             except Exception as ex:
                 print("*********")
@@ -72,7 +91,8 @@ def add_or_delete_bk():
                     status=500,
                     mimetype="application/json"
             )
-            return redirect(url_for("tasks"))
+            return redirect("/")
+          
     
     return render_template('upload_delete_books.html')
 
@@ -139,12 +159,8 @@ def submit_review():
             try:
                 #got the update review array using $push from site https://docs.mongodb.com/manual/reference/operator/update/push/
                 dbResponse = mongo.db.books.update_one({"_id" : ObjectId(bkid)},{"$push" : {"review": bookreview}})
-                return Response(
-                    response= json.dumps(
-                        {"message":"added review!!"}),
-                    status=200,
-                    mimetype="application/json"
-            )
+
+                flash("Review has been added")
 
             except Exception as ex:
                 print("*********")
@@ -156,7 +172,8 @@ def submit_review():
                     status=500,
                     mimetype="application/json"
             )
-            return render_template("submit_review.html", bkid=review_add_id)
+ 
+            return redirect('/')
 
  
 @app.route("/check_selected", methods=['GET','POST'])
