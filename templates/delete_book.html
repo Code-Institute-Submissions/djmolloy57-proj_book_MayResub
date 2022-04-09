@@ -2,15 +2,17 @@
 {% block content %}
 <body>
 <div class="container">
-<table cellspacing="0" class="column-options">
+<table class="column-options bordered responsive-table">
     <th>Book Name</th>
     <th>Author</th>
     <th>Category</th>
     <th>Book Cover</th>
     <th>Number of Reviews</th>
     <th>Reviews</th>
-    <h4>Book List</h4>
+    <h4>Option To Delete Books</h4>
+    <h6 id="swipe">Please swipe right to view all listing</h6>
     {% for list in lists %}
+            
         <tr>
         <td>{{ list.book_name }}</td>
         <td>{{ list.Author}}</td>
