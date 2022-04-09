@@ -1,5 +1,3 @@
-# proj_book
-
 # Book Review
 
 Books Review is a website where visitors can find Books of different genre's and categories such as biographies, fantasy, historical, 
