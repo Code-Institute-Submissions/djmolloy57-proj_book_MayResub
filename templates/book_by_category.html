@@ -11,8 +11,11 @@
     <th>NUMBER OF REVIEWS</th>
     <th>REVIEWS</th>
     <h4>BOOK LIST</h4>
+  
     {% for res in result_1 %}
-        
+         {% if loop.index > 1 %}
+           <h6 id="swipe">Please swipe right to view all listing</h6>
+         {% endif %}
         <tr>
         <td>{{ res.book_name }}</td>
         <td>{{ res.Author}}</td>
