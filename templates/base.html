@@ -27,46 +27,48 @@
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
                   <i class="fas fa-bars"></i>
                 </a>
-                <ul class="right hide-on-med-and-down">                   
-               
+                <ul class="right hide-on-med-and-down">                  
+                
                   <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
                   <li><a href="{{ url_for('add_or_delete_bk')}}">Upload Book</a></li>
                   <li><a href="{{ url_for('delete_bk') }}">Delete Book</a></li>
                   <!-- Dropdown Trigger -->
-                  <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Book Category</a>
-
-                  <!-- Dropdown Structure -->
-                  <ul id='dropdown1' class='dropdown-content'>
+                  <li><a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Book Category</a></li>
+                 
+                </ul>
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>
                     <li><a href="{{ url_for('get_biography')}}">Biography</a></li>
                     <li><a href="{{ url_for('get_fantasy')}}">Fantasy</a></li>
                     <li><a href="{{ url_for('get_history')}}">History</a></li>
                     <li><a href="{{ url_for('get_thriller')}}">Thriller</a></li>
     
-                  </ul>
-              
                 </ul>
+              
+
               </div>
             <div>
           </nav>
         
         <!--- Mobile sideNav bar-->
           <ul class="sidenav" id="mobile-demo">
-            <!--<li><h4 class="center-align text-darken 4">Task Manager</h4></li>-->
+
             <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
             <li><a href="{{ url_for('add_or_delete_bk')}}">Upload Book</a></li>
             <li><a href="{{ url_for('delete_bk') }}">Delete Book</a></li>
          
-            <!-- Dropdown Trigger -->
-            <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Book Category</a>
+           
+            <li><a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Book Category</a></li>
+          </ul>
             <!-- Dropdown Structure -->
-            <ul id='dropdown2' class='dropdown-content'>
-              <li><a href="{{ url_for('get_biography')}}">Biography</a></li>
-              <li><a href="{{ url_for('get_fantasy')}}">Fantasy</a></li>
-              <li><a href="{{ url_for('get_history')}}">History</a></li>
-              <li><a href="#">Thriller</a></li>
+          <ul id='dropdown2' class='dropdown-content'>
+            <li><a href="{{ url_for('get_biography')}}">Biography</a></li>
+            <li><a href="{{ url_for('get_fantasy')}}">Fantasy</a></li>
+            <li><a href="{{ url_for('get_history')}}">History</a></li>
+            <li><a href="#">Thriller</a></li>
 
-            </ul>
-          </ul>   
+          </ul>
+     
 
     </header>
     {% block content  %}
