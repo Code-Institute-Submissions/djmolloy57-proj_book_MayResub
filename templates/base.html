@@ -7,7 +7,8 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
         integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
       
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
@@ -20,14 +21,17 @@
         <!-- Top Navbar-->
         <nav class="nav-extended text-shadow">
             <div class="nav-wrapper">
-              <a href="#!" class="brand-logo">Book Review</a>
-              <!--<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"</i></a>-->
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+              <div class="container"></div>
+                <a href="#!" class="brand-logo">Book Review</a>
+              
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right">
+                  <i class="fas fa-bars"></i>
+                </a>
                 <ul class="right hide-on-med-and-down">                   
                
-                <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
-                <li><a href="{{ url_for('add_or_delete_bk')}}">Upload Book</a></li>
-                <li><a href="{{ url_for('delete_bk') }}">Delete Book</a></li>
+                  <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
+                  <li><a href="{{ url_for('add_or_delete_bk')}}">Upload Book</a></li>
+                  <li><a href="{{ url_for('delete_bk') }}">Delete Book</a></li>
                   <!-- Dropdown Trigger -->
                   <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Book Category</a>
 
@@ -40,8 +44,9 @@
     
                   </ul>
               
-              </ul>
-            </div>
+                </ul>
+              </div>
+            <div>
           </nav>
         
         <!--- Mobile sideNav bar-->
@@ -50,7 +55,19 @@
             <li><a href="{{ url_for('get_tasks') }}">Home</a></li>
             <li><a href="{{ url_for('add_or_delete_bk')}}">Upload Book</a></li>
             <li><a href="{{ url_for('delete_bk') }}">Delete Book</a></li>
-          </ul>
+         
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger btn' href='#' data-target='dropdown2'>Book Category</a>
+            <!-- Dropdown Structure -->
+            <ul id='dropdown2' class='dropdown-content'>
+              <li><a href="{{ url_for('get_biography')}}">Biography</a></li>
+              <li><a href="{{ url_for('get_fantasy')}}">Fantasy</a></li>
+              <li><a href="{{ url_for('get_history')}}">History</a></li>
+              <li><a href="#">Thriller</a></li>
+
+            </ul>
+          </ul>   
+
     </header>
     {% block content  %}
     {% endblock %}
@@ -81,6 +98,7 @@
      $(document).ready(function(){
         $('.modal').modal();
         $('.dropdown-trigger').dropdown();
+        $('.sidenav').sidenav();
       });
 
 
