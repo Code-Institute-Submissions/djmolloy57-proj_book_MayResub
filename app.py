@@ -52,6 +52,8 @@ def get_fantasy():
 def get_thriller():
     result_thriller = mongo.db.books.find({
     "Category" : { "$eq" : "Thriller"}})
+    if len(list(result_thriller))==0:
+       result_thriller=" "
     return render_template("book_by_category.html", result_1=result_thriller)
 
 
