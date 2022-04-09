@@ -10,9 +10,13 @@
     <th>BOOK COVER</th>
     <th>NUMBER OF REVIEWS</th>
     <th>REVIEWS</th>
-    <h4>BOOK LIST</h4>
+    <h4>{{ result_1[0]['Category'] }} Book List</h4>
+    
   
     {% for res in result_1 %}
+
+           
+     
          {% if loop.index > 1 %}
            <h6 id="swipe">Please swipe right to view all listing</h6>
          {% endif %}
