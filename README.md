@@ -1,8 +1,7 @@
 # Book Review
-
-Books Review is a website where visitors can find Books of different genre's and categories such as biographies, fantasy, historical, 
-thrillers, horror,and sport. They can also find reviews for Books and aswell add reviews. Books can also be added and removed from the
-site
+This project purpose is to demonstrate the use of a document based database MongoDb and to perform 
+Create, Read, Update and Delete (CRUD) operations on it within the Python Flask framework.<br>
+The Books Review is a website where visitors can find Books of different genre's and categories such as biographies, fantasy, historical, thrillers, horror,and sport. They can also find reviews for Books and aswell add/edit reviews. Books can also be added and removed from the site
 
 
 ## Table of Contents
