@@ -248,8 +248,7 @@ o	pip3
 o	dnspython
 o	flask
 o	flask-pymongo
-o	flask-wtf
-o	flask cloudinary
+
 These are installed from the Python Package Index (PyPI) repository.
 4.	Install the cloned repository by running the code snippet copied above.
 5.	Create a requirements.txt file by running:
@@ -279,7 +278,10 @@ To deploy to Heroku from GitHub master branch
 5.	This setting can be automated so any new merges to the GitHub master branch will automatically redeploy and   build on Heroku Apps.
 
 # Feature would like:
-  Recommended Book section. A search book bar
+ 
+  * Recommended Book section. 
+  * A search book bar. 
+  * A login for user to add books to a cart to purchase.
 
 # Credits
 
@@ -288,6 +290,16 @@ To deploy to Heroku from GitHub master branch
    
 ## Acknowledgements
 
+
    * Nav menu and book upload page borrowed from Mini Project Task Manager.
-    
-   * Got helpful hints on solving issue from https://stackoverflow.com/
+
+   * Materialized reference: https://materializecss.com/getting-started.html
+
+   * Materialize dropdown  https://www.youtube.com/watch?v=XCC-K6Q9h7M
+
+   * Flask reference: https://www.fullstackpython.com/flask.html
+
+   * Resolving Category dropdown checking selection: https://www.youtube.com/watch?v=ErChak2PgGE
+
+   * Other sites https://stackoverflow.com/
+
