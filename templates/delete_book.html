@@ -2,15 +2,18 @@
 {% block content %}
 
 <div class="container">
-<table class="column-options bordered responsive-table">
-    <th>Book Name</th>
-    <th>Author</th>
-    <th>Category</th>
-    <th>Book Cover</th>
-    <th>Number of Reviews</th>
-    <th>Reviews</th>
     <h4>Option To Delete Books</h4>
     <h6 id="swipe">Please swipe right to view all listing</h6>
+<table class="column-options bordered responsive-table">
+    <tr>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Book Cover</th>
+        <th>Number of Reviews</th>
+        <th>Reviews</th>
+    </tr>
+
     {% for list in lists %}
             
         <tr>
@@ -25,9 +28,9 @@
                 <input type="hidden" id="book_id" name="book_id" value="{{ list._id }}">
                 <input type="submit" name="submit" value="Delete Book" class="btn btn-info">
             </form>
+            <br>
         </td>
-   
-        <br>
+
         </tr>
     {% endfor %}
 </table>
