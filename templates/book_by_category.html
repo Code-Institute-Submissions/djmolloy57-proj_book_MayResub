@@ -27,11 +27,11 @@
     
     {% for res in result_1 %}
 
-            <tr>
+        <tr>
             <td>{{ res.book_name }}</td>
             <td>{{ res.Author}}</td>
             <td>{{ res.Category}}</td>
-            <td><img src="{{ res.book_cover}}"></td>
+            <td><img src="{{ res.book_cover}}" alt="Book Cover pic"></td>
             <td>{{res['review']|length}}</td>
         
             <td>
@@ -39,13 +39,14 @@
                     <input type="hidden" id="book_id" name="book_id" value="{{ res._id }}">
                     <input type="submit" name="submit" value="View/Add Review" class="btn btn-info">
                 </form>
+                <br>
             </td>
    
-            <br>
-            </tr>
+           
+        </tr>
       
-            <br>
-            </tr>
+          
+        
     {% endfor %}
     
 </table>
