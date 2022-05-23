@@ -25,11 +25,18 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_tasks")
 def get_tasks():
+    ''' this route function is on Site load or clicking on Navbar Home
+        button which will return all database Book document record as book list
+    '''
     tasks = list(mongo.db.books.find())
     return render_template("tasks.html", tasks=tasks)
 
 @app.route("/get_biography")
 def get_biography():
+    ''' this route function 
+        looks up Biography data set in DB
+        returns the Biography book list
+    '''
     result_bio = mongo.db.books.find({
     "Category" : { "$eq" : "Biography"}})
     return render_template("book_by_category.html", result_1=result_bio)
@@ -37,19 +44,30 @@ def get_biography():
 
 @app.route("/get_history")
 def get_history():
-
+    ''' this route function is triggered in by History in 
+        Category Dropdown on main page looks up History data 
+        set in DB returns the Fantasy book list
+    '''
     result_hist = mongo.db.books.find({
     "Category" : { "$eq" : "History"}})
     return render_template("book_by_category.html", result_1=result_hist)
 
 @app.route("/get_fantasy")
 def get_fantasy():
+    ''' this route function is triggered in by Fantasy in 
+        Category Dropdown on main page looks up Fantasy data 
+        set in DB returns the Fantasy book list
+    '''
     result_fantasy = mongo.db.books.find({
     "Category" : { "$eq" : "Fantasy"}})
     return render_template("book_by_category.html", result_1=result_fantasy)
 
 @app.route("/get_thriller")
 def get_thriller():
+    ''' this route function is triggered in by Thriller in 
+        Category Dropdown on main page looks up Thriller data 
+        set in DB returns the Thriller book list
+    '''
     result_thriller = mongo.db.books.find({
     "Category" : { "$eq" : "Thriller"}})
     if len(list(result_thriller))==0:
@@ -69,6 +87,11 @@ def delete_bk():
 
 @app.route("/add_or_delete_bk" ,methods=['GET', 'POST'])
 def add_or_delete_bk():
+    ''' this route function is triggered by the add book button 
+        which gathers form data Add Book and insert it into the 
+        Database document
+        returns site main page
+    '''
 
     if request.method == "POST":
        
@@ -106,6 +129,9 @@ def add_or_delete_bk():
   
 @app.route('/view_add_review', methods=['GET', 'POST'])
 def view_add_review():
+    ''' this route function is trigger by click View/Add Review button
+        returns the view/add review page
+    '''
     if request.method == 'GET':
         return render_template("view_add_review.html")
 
