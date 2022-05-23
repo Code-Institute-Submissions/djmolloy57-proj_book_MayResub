@@ -227,9 +227,18 @@ def check_selected():
  
 @app.route('/update/<id>/<review>' , methods=['GET', 'POST'])
 def update(id,review):
+    ''' this route function takes in two parameter
+        book id and the amended review  
+        looks up the id for particular book in the Mongo DB document and update
+        the particular string array review to the new ammended review.
+        return to main page
+
+        
+    '''
 
     review_bk_id = id
     review_bk_update = review
+    review_bk_update1 = request.form.get("review")
     if request.method == "POST":
      
         review_bkid = mongo.db.books.find({"_id" : ObjectId(review_bk_id)})
@@ -239,10 +248,14 @@ def update(id,review):
             try:
                 
                 print(review_bk_id)
-                print(review_bk_update)
-                
-                db.books.update_one({'_id': review_bk_id, 'review': { "$elemMatch": {"$set": {"review.$": review_bk_update}}}})
-                return redirect('/view_add_review')
+                print(review_bk_update1)
+                             
+                mongo.db.books.update_one({'_id': ObjectId(id), 'review': review},{"$set": {"review.$": review_bk_update1}})
+         
+                #return redirect('/view_add_review')
+                return redirect('/')
+     
+               
             except:
                 return "There was a problem updating that record"
     else:
