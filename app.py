@@ -59,6 +59,9 @@ def get_thriller():
 
 @app.route("/delete_bk")
 def delete_bk():
+    ''' this route function which is triggered by menu Delete button
+        returns the the delete book page
+    '''
     lists = list(mongo.db.books.find())
     return render_template("delete_book.html", lists=lists)
 
@@ -124,6 +127,11 @@ def write_review():
 
 @app.route("/delete_book", methods=['POST'])
 def delete_book():
+    ''' this route function is trigged by Delete Book Button 
+        it retrieve the site page book id and looks up the id 
+        in the Mongo DB document to delete
+        returns the the delete book page
+    '''
  
     try:
         delbkid = request.form['book_id']
