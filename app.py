@@ -62,6 +62,8 @@ def delete_bk():
     lists = list(mongo.db.books.find())
     return render_template("delete_book.html", lists=lists)
 
+    
+
 @app.route("/add_or_delete_bk" ,methods=['GET', 'POST'])
 def add_or_delete_bk():
 
@@ -122,23 +124,15 @@ def write_review():
 
 @app.route("/delete_book", methods=['POST'])
 def delete_book():
-    test1='inside start of delete book function'
+ 
     try:
         delbkid = request.form['book_id']
         dbResponse = mongo.db.books.delete_one({"_id" : ObjectId(delbkid)})
         if dbResponse.deleted_count == 1:
-            return Response(
-                response= json.dumps(
-                {"message":"book deleted"}),
-                status=200,
-                mimetype="application/json"
-            )     
-            return Response(
-                response= json.dumps(
-                {"message":"book not found"}),
-                status=200,
-                mimetype="application/json"
-            )
+            lists = list(mongo.db.books.find())
+            return render_template("delete_book.html", lists=lists)
+           
+        
     except Exception as ex:
         print(ex)
         return Response( 
@@ -147,8 +141,7 @@ def delete_book():
             status=500,
             mimetype="application/json"
         )
-        return render_template("delete_book.html")
-       
+    
 
 @app.route("/submit_review", methods=['GET','POST'])
 def submit_review():
