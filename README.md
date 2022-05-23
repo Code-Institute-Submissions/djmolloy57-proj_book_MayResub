@@ -15,8 +15,8 @@ The Books Review is a website where visitors can find Books of different genre's
 > - [Acknowledgments](#Acknowledgements)
 
 # Description
-Book Review website provides visitors the facility to view books of different types view and add book reviews.  
-The website is intended to be accessible on all type of devices<br> mobile phone, tablet, laptop and desktop.
+The Book Review website offers the visitors the facility to look at books of different genres. The visitor can select a book of interest on the site, the site will provide a book summary and details such as Author and book reviews, they can also filter the book list by selecting book category to return as booking listing by genre.  
+The website is intended to be accessible on all type of devices:<br> mobile phone, tablet, laptop and desktop.
 
 # UX
 
