@@ -102,7 +102,7 @@ def add_or_delete_bk():
             "Author": request.form.get("Author"),
             "book_cover": request.form.get("book_cover"),
             "Number_of_Reviews": 0,
-            "review": ""
+            "review": []
         }
         added_new_rec = mongo.db.books.insert_one(task)
         if  added_new_rec:
