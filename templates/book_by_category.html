@@ -3,25 +3,30 @@
 {% block content %}
 
 <div class="container">
-<table class="column-options bordered responsive-table">
-    <th>BOOK NAME</th>
-    <th>AUTHOR</th>
-    <th>CATEGORY</th>
-    <th>BOOK COVER</th>
-    <th>NUMBER OF REVIEWS</th>
-    <th>REVIEWS</th>
     {% if result_1 ==0 %}
-        <h4>Book List</h4>
-    {% else %}
-        <h4>{{ result_1[0]['Category'] }} Book List</h4>
-        
-    {% endif %}
+  
+    <h4>Book List</h4>
+{% else %}
+    <h4>{{ result_1[0]['Category'] }} Book List</h4>
+    
+{% endif %}
+{% if result_1[1] %}
+ <h6 id="swipe">Please swipe right to view all listing</h6>
+{% endif %}
+
+
+<table class="column-options bordered responsive-table">
+    <tr>
+        <th>BOOK NAME</th>
+        <th>AUTHOR</th>
+        <th>CATEGORY</th>
+        <th>BOOK COVER</th>
+        <th>NUMBER OF REVIEWS</th>
+        <th>REVIEWS</th>
+    </tr>
     
     {% for res in result_1 %}
-                
-            {% if loop.index > 1 %}
-                <h6 id="swipe">Please swipe right to view all listing</h6>
-            {% endif %}
+
             <tr>
             <td>{{ res.book_name }}</td>
             <td>{{ res.Author}}</td>
