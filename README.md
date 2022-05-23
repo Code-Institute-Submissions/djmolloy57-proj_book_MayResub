@@ -88,12 +88,19 @@ I used Google fonts to enhance some text sections of the site. I decided on Robo
   The site requires minimum input from the user<br>
     * Visitor/user on entering main site see list books showing book details such as book name, Author, category, how many reviews 
       have been added for the book and a button next to it to view and add review.<br>
-    * Within the view and add review page, a book summary is provide and a list of submitted book reviews. There an a button to submit a book review.<br>
+    * Within the view and add review page, a book summary is provide and a list of submitted book reviews. There an a button to 
+    submit a book review.<br>
+    * A user can edit their reviews<br>
     * Other site features to upload Book details and delete existing books.<br>
+    * In mobile view there a text prompt to swipe right for book listing so user can see full listing. This text prompt
+      appears where a book category has more than one book<br>
 
 
 # Technologies Used
+The website is implemented using the Jinja template engine which allows for the use of 
+Jinja templating logic along with the Flask framework in Python.
 
+### Technologies:
 * HTML
     * For basic website page structure / markup
 
@@ -101,8 +108,7 @@ I used Google fonts to enhance some text sections of the site. I decided on Robo
     * CSS3 for styling the website pages aligning elements with padding, margins and I used Float for positioning elements 
 
 
-* MaterializeCSS– to separate main pags of site into even grid sections. This allowed greater consistency in layout when interacting 
-  with site. 
+* MaterializeCSS– to separate main pags of site into even grid sections. This allowed greater consistency in layout when interacting with site. 
 
 * jquery
     * jQuery for MaterializeCSS initialization
@@ -115,12 +121,42 @@ I used Google fonts to enhance some text sections of the site. I decided on Robo
 * mongodb
      * To provide storage storage of Books details such as Book name, Category type, Book cover picture urls and Reviews 
 
-* Font Awesome
-    * To provide icons for the site pages.
+* Font Googleapis
+    *To provide Materialize icon for Add Book form fields
     
 * Google Font
     * to make Paragraph Heading on Home page look clearer I used Roboto font-family referencing https://fonts.google.com/ CDN<br>
       in the style css.
+
+Flask Modules used:
+
+* render_template: This method is used for delivering the required page from the templates folder and the respective 
+  template inheritance and Jinja templating logic.
+
+* redirect: This method is used to redirect users to a different URL than the one requested as an aid to site navigation.
+
+* url_for: This is used to generate a URL to a given endpoint and calls the respective Python function to be executed.
+
+Flask PyPI import packages used:
+
+* dnspython: This module is a DNS toolkit for Python. It is used for server queries and dynamic updates.
+
+* flask-pymongo: This module is used as the interface with MongoDb for performing database CRUD operations
+
+
+# Database Schema:
+In this project in my MongoDB database is a simple setup of one Book document with the following fields:
+
+| Field         | Data Type     |   Form Validation Type   | Required Field|
+| ------------- |-------------  |:-------------------------|-------------:
+| _id           | ObjectId      | Auto generated           | Yes
+| book_name     | String        | Text                     | Yes
+| Author        | String        | Text                     | Yes
+| Number_of_Reviews     | Int32     | Text                | No
+| book_cover     | String     | url              | Yes
+| book_summary     |  String     | Text                | Yes
+| Review     |  String Array     | Text                | No
+
 
 # Testing
 
