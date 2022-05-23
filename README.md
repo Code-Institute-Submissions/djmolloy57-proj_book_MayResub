@@ -19,6 +19,8 @@ The Book Review website offers the visitors the facility to look at books of dif
 The website is intended to be accessible on all type of devices:<br> mobile phone, tablet, laptop and desktop.
 
 # UX
+### Navbar:
+A fixed navbar is used in the website for ease of navigation, in mobile view switches to a burger menu upon clicking displays navbar options. A visiting user to the site can intuitively access the different features of the site.
 
 ### Strategy
 The object of the website is to inform visitor of different Books, allow them to view book summary and reviews 
