@@ -159,6 +159,70 @@ In this project in my MongoDB database is a simple setup of one Book document wi
 
 
 # Testing
+# Testing
+Unit Testing:
+
+* The python unittest module was used to derive to test the different app.py routes for app site.
+* The following site Features were tested with unittest module in test_website.py:
+1. Testing 200 ok response for the feature page
+2. Testing you unique site page html tag to ensure correct page is returned in test to validate site route.
+
+Test were run on site pages and features: 
+  * /get_task -  Home page
+  * /add_or_delete_bk - Add Book page
+  * /delete_bk - Delete Book page
+  * /get_biography - Biography Book listing page
+  * /get_fantasy - Fantasy Book listing page
+  * /get_history - History Book listing page
+
+Test - Add Book:
+* All Fields on the Add Book form are required and form will not submit the form information until
+all the field are completed and the field input is the correct format.
+Example:
+* The Book Summary field has a mininmum length and user will receive a prompt if the input is less than the length.
+* The Book Cover requires the input type to be a url and will prompt user if input is anything other than a url.
+* The Book Category dropdown needs to be selected and will prompt user if no category is selected.
+
+
+Manual Testing
+CSS was tested by using Google Chrome Developer Tools to alter elements on the page.
+
+This project was tested for display responsiveness using the following screen sizes.
+1.	Large screen 
+o	Desktop Chrome
+o	Desktop Firefox
+
+2.	Medium screen 
+o	iPad Pro Safari
+o	Desktop Chrome
+
+3.	Small screen 
+o	Phone Samsung 7
+o	iPhone 6
+
+
+Test Site validation:
+* The site pages and code been validated using the following online validators - No errors were found.
+
+1. W3C Validation Service
+2. pep8online
+3. jshint 
+
+
+
+# Bugs and troubleshooting
+
+1.	Materialize
+Materialize styling library was more limited than other other frameworks such as Bootstrap.
+
+2 Resizing of the navbar header was not reflected correctly for certain screen sizes . I had to implement a custom media query as a workaround
+
+3 MongoDb altering/amending array content for the book collection Review field for the edit Review on book page proved timeconsumming - resolved issue by looking for nuggets of information in 3rd party mongodb site.
+
+4. The Book cover field was original a text field causing caused issues as anything could be entered in this field it should only allow url type entries. Since this was not done originally any none url field enter caused console 404 error on loading the website GET https://djm-flask-book-review-test. get_tasks:178  herokuapp.com/Eiusmod%20pariatur%20Co 404 (NOT FOUND). This was due to a non url entry Book cover field.  The Book Cover field was changed to input type url and this error no longer occurred.
+
+5. Add Book page Category field was originally a text field but this caused issues as anything could be entered in this field
+   I wanted to make sure only a select type of categories could be entered. I create a select dropdown where only a select amount of topic could entered. 
 
 
 
