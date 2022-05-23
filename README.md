@@ -22,6 +22,9 @@ The website is intended to be accessible on all type of devices:<br> mobile phon
 ### Navbar:
 A fixed navbar is used in the website for ease of navigation, in mobile view switches to a burger menu upon clicking displays navbar options. A visiting user to the site can intuitively access the different features of the site.
 
+### Category Dropdown:
+A user can view all uploaded books listing by Category Genre to suit specific user tastes.
+
 ### Strategy
 The object of the website is to inform visitor of different Books, allow them to view book summary and reviews 
 
@@ -55,6 +58,19 @@ A button is provided for the listed book to view and add review.
 ## Skeleton
 In the main the wireframes more or less match my final project.
 See links to relevent section of the wireframes below:
+
+* home
+    * Link: <a href="wireframes/wireframe_home_page.png" target="_blank" >Wireframe Home Page</a>
+   
+* Add Book
+    * Link: <a href="wireframes/wireframe_add_book.png" target="_blank" >Wireframe Add Book Page</a>
+    
+
+* Delete Book
+    * Link: <a href="wireframes/wireframes_delete_book.png" target="_blank">Wireframe Delete Book Page</a>
+    
+* View/Add Review 
+    * Link: <a href="wireframes/wireframes_view_add_review.png" target="_blank">Wireframe View/Add Review Page</a>
 
 
 ##  Images
