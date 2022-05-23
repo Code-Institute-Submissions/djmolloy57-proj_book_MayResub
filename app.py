@@ -177,8 +177,17 @@ def delete_book():
         )
     
 
+
 @app.route("/submit_review", methods=['GET','POST'])
 def submit_review():
+    ''' this route function 
+        get the book id and the writeReviewForm field which is assigned
+        to bookreview variable.
+        and looks up the id in the Book Document in the DB
+        and for that book id that bookvariable content to the Document
+        review string array
+        returns to main page
+    '''
     if request.method == 'POST':
 
         bkid = request.form['bkid']
@@ -188,8 +197,8 @@ def submit_review():
             try:
                 #got the update review array using $push from site https://docs.mongodb.com/manual/reference/operator/update/push/
                 dbResponse = mongo.db.books.update_one({"_id" : ObjectId(bkid)},{"$push" : {"review": bookreview}})
-
-                flash("Review has been added")
+               
+                #flash("Review has been added")
 
             except Exception as ex:
                 print("*********")
@@ -203,6 +212,8 @@ def submit_review():
             )
  
             return redirect('/')
+
+
 
  
 @app.route("/check_selected", methods=['GET','POST'])
@@ -240,4 +251,4 @@ def update(id,review):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
