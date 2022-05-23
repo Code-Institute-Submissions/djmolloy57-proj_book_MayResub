@@ -36,7 +36,7 @@
         
             <td>
                 <form action="/view_add_review" method="post" role="form">
-                    <input type="hidden" id="book_id" name="book_id" value="{{ res._id }}">
+                    <input type="hidden" id="book_{{ res._id }}" name="book_id" value="{{ res._id }}">
                     <input type="submit" name="submit" value="View/Add Review" class="btn btn-info">
                 </form>
                 <br>
